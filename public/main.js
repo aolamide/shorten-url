@@ -25,7 +25,6 @@ const formSubmit = e => {
             confirmationShow.innerText = response.error;
         }
         else {
-            e.target.reset();
             confirmationShow.innerHTML = `Hooray!!! The link can now be visited 
             through <a target="_blank" 
             href=${response.shortUrl} rel = "noopener noreferer" > 
