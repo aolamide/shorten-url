@@ -53,9 +53,15 @@ urlSchema.pre('save', async function (next) {
       }
     }
   }
-
-  this.shortUrl = this.shortUrl + this.unique_name;
   next();
+});
+
+/**
+ * Create shortUrl virtual field.
+ */
+urlSchema.virtual('shortUrl').get(function () {
+  const baseUrl = process.env.BASE_URL || 'http://localhost:3000/';
+  return baseUrl + this.unique_name;
 });
 
 /**
