@@ -7,8 +7,6 @@ dotenv.config();
 //MONGO_URI
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/url';
 
-console.log(process.env.MONGO_URI);
-
 //Connect to DB function
 const connect = () => {
   mongoose
