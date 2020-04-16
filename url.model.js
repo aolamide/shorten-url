@@ -1,24 +1,32 @@
 const mongoose = require('mongoose');
 const Str = require('@supercharge/strings');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+// Options object to add to the mongoose schema.
+const opts = {
+  toObject: { virtuals: true },
+  toJSON: { virtuals: true },
+};
 
 //create Url Schema (format)
-const urlSchema = new mongoose.Schema({
-  originalUrl: {
-    type: String,
-    required: true,
+const urlSchema = new mongoose.Schema(
+  {
+    originalUrl: {
+      type: String,
+      required: true,
+    },
+    unique_name: {
+      type: String,
+    },
+    dateCreated: {
+      type: Date,
+      default: Date.now,
+    },
   },
-  shortUrl: {
-    type: String,
-    required: true,
-  },
-  unique_name: {
-    type: String,
-  },
-  dateCreated: {
-    type: Date,
-    default: Date.now,
-  },
-});
+  opts
+);
 
 /**
  * Assign randomly generated unique name to unique name field.
